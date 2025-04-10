@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+    <header class="site-header">
+        <h1 class="site-title">Tech Inc</h1>
+    </header>
+
+    <main class="main-content4">
+        <section class="login-section">
+            <h2 class="login-title">Welcome Back</h2>
+            <form class="login-form" action="index.html" method="POST">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                
+                <button type="submit" class="login-button unique-login-button">Login</button>
+            </form>
+            <button class="back-button" onclick="goBack()">Back</button>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p class="footer-text">&copy; 2025 Benjamin Uslu. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

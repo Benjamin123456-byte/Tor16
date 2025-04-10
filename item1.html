@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Laptop</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+    <header class="site-header">
+        <h1 class="site-title">Tech Inc</h1>
+        <nav class="main-nav">
+            <ul class="nav-list">
+                <li class="nav-item"><a class="nav-link" href="index.html">Shop</a></li>
+                <li class="nav-item"><a class="nav-link" href="cart.html">Cart</a></li>
+                <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <section class="item-details">
+            <h2 class="item-title">The Laptop</h2>
+            <img src="https://www.diamondcomputers.co.uk/193-large_default/services-and-repairs-laptop-broken-screen-replacements.jpg"     alt="Item 1" class="item-image">
+            <p class="item-description">Do you need more then 2 Chrome tabs open then you need this </p>
+            <p class="item-price">100$</p>
+            <p class="item-quantity">Quantity: <input type="number" id="item-quantity" value="1" min="1"></p>
+            <p class="item-stock">In Stock</p>
+            <p class="item-seller">Sold by: Tech Inc</p>
+            <p class="item-shipping">Shipping: Free</p>
+            <p class="item-return">Returns: 30-day return policy</p>
+            <p class="item-warranty">Warranty: 1-year warranty</p>
+            <p class="item-reviews">Reviews: 4.5/5 (based on 100 reviews)</p>
+            <p class="item-rating">Rating: ★★★★☆</p>
+            <button class="add-to-cart-btn" onclick="addToCart()">Add to Cart</button>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p class="footer-text">&copy; 2025 Benjamin Uslu. All rights reserved.</p>
+    </footer>
+
+    <script>
+    function addToCart() {
+    const quantityInput = document.getElementById('item-quantity').value;
+    const quantity = parseInt(quantityInput, 10);
+
+    if (isNaN(quantity) || quantity < 1) {
+        alert("Please enter a valid quantity.");
+        return;
+    }
+
+    const item = {
+        id: 1,
+        name: "The Laptop",
+        price: 100,
+        quantity: quantity
+    };
+
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const existingItem = cart.find(cartItem => cartItem.id === item.id);
+
+    if (existingItem) {
+        existingItem.quantity = item.quantity;
+    } else {
+        cart.push(item);
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert(`${item.quantity} item(s) added to cart!`);
+}
+    </script>
+</body>
+</html>
