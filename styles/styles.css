@@ -535,3 +535,48 @@ body {
         font-size: 0.8em;
     }
 }
+
+
+.reviews {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.review {
+    margin-right: 20px;
+    flex: 1;
+}
+
+.review-form {
+    flex: 0 0 40%;
+    display: flex;
+    flex-direction: column;
+}
+
+.review-input {
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.review-button {
+    padding: 10px;
+    font-size: 1em;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.review-button:hover {
+    background-color: #218838;
+}
