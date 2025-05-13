@@ -112,3 +112,32 @@ function setupScrollToTopButton() {
 }
 
 document.addEventListener('DOMContentLoaded', setupScrollToTopButton);
+
+function displayGreeting() {
+    const greetingContainer = document.createElement('div');
+    greetingContainer.id = 'dynamic-greeting';
+    greetingContainer.style.textAlign = 'center';
+    greetingContainer.style.padding = '10px';
+    greetingContainer.style.backgroundColor = 'black';
+    greetingContainer.style.color = 'white';
+    greetingContainer.style.fontSize = '1.2em';
+    greetingContainer.style.marginBottom = '20px';
+
+    const currentHour = new Date().getHours();
+    let greetingMessage = '';
+
+    if (currentHour < 12) {
+        greetingMessage = 'Good Morning!';
+    } else if (currentHour < 18) {
+        greetingMessage = 'Good Afternoon!';
+    } else {
+        greetingMessage = 'Good Evening!';
+    }
+
+    greetingContainer.textContent = greetingMessage;
+
+    const header = document.querySelector('.site-header');
+    header.insertAdjacentElement('afterend', greetingContainer);
+}
+
+document.addEventListener('DOMContentLoaded', displayGreeting);
