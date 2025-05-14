@@ -141,3 +141,22 @@ function displayGreeting() {
 }
 
 document.addEventListener('DOMContentLoaded', displayGreeting);
+
+function setupTypingEffect() {
+    const bannerText = document.querySelector('.banner-text h2');
+    const text = bannerText.textContent;
+    bannerText.textContent = '';
+    let index = 0;
+
+    function type() {
+        if (index < text.length) {
+            bannerText.textContent += text.charAt(index);
+            index++;
+            setTimeout(type, 100);
+        }
+    }
+
+    type();
+}
+
+document.addEventListener('DOMContentLoaded', setupTypingEffect);
