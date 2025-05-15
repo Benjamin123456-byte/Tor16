@@ -160,3 +160,11 @@ function setupTypingEffect() {
 }
 
 document.addEventListener('DOMContentLoaded', setupTypingEffect);
+
+function setupDarkModeToggle() {
+    const btn = document.getElementById('dark-mode-toggle');
+    btn.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+    });
+}
+document.addEventListener('DOMContentLoaded', setupDarkModeToggle);
