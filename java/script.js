@@ -168,3 +168,8 @@ function setupDarkModeToggle() {
     });
 }
 document.addEventListener('DOMContentLoaded', setupDarkModeToggle);
+
+document.getElementById('show-password').addEventListener('change', function() {
+    const pwd = document.getElementById('password');
+    pwd.type = this.checked ? 'text' : 'password';
+});
