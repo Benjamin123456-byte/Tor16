@@ -173,3 +173,13 @@ document.getElementById('show-password').addEventListener('change', function() {
     const pwd = document.getElementById('password');
     pwd.type = this.checked ? 'text' : 'password';
 });
+
+document.getElementById('password').addEventListener('input', function() {
+    const strength = document.getElementById('password-strength');
+    const val = this.value;
+    let cls = '';
+    if (val.length < 6) cls = 'weak';
+    else if (val.match(/[A-Z]/) && val.match(/[0-9]/) && val.length >= 8) cls = 'strong';
+    else cls = 'medium';
+    strength.className = 'password-strength ' + cls;
+});
