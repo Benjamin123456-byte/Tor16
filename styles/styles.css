@@ -665,3 +665,14 @@ body.dark-mode {
 .password-strength.weak { background: #e74c3c; }
 .password-strength.medium { background: #f1c40f; }
 .password-strength.strong { background: #2ecc71; }
+
+.search-bar {
+    display: block;
+    margin: 20px auto 10px auto;
+    padding: 10px;
+    width: 80%;
+    max-width: 400px;
+    font-size: 1em;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}

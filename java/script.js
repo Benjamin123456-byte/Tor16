@@ -169,17 +169,51 @@ function setupDarkModeToggle() {
 }
 document.addEventListener('DOMContentLoaded', setupDarkModeToggle);
 
-document.getElementById('show-password').addEventListener('change', function() {
+document.addEventListener('DOMContentLoaded', function() {
+    const showPwd = document.getElementById('show-password');
     const pwd = document.getElementById('password');
-    pwd.type = this.checked ? 'text' : 'password';
+    if (showPwd && pwd) {
+        showPwd.addEventListener('change', function() {
+            pwd.type = this.checked ? 'text' : 'password';
+        });
+    }
+
+    const strength = document.getElementById('password-strength');
+    if (pwd && strength) {
+        pwd.addEventListener('input', function() {
+            const val = this.value;
+            let cls = '';
+            if (val.length < 6) cls = 'weak';
+            else if (val.match(/[A-Z]/) && val.match(/[0-9]/) && val.length >= 8) cls = 'strong';
+            else cls = 'medium';
+            strength.className = 'password-strength ' + cls;
+        });
+    }
 });
 
-document.getElementById('password').addEventListener('input', function() {
-    const strength = document.getElementById('password-strength');
-    const val = this.value;
-    let cls = '';
-    if (val.length < 6) cls = 'weak';
-    else if (val.match(/[A-Z]/) && val.match(/[0-9]/) && val.length >= 8) cls = 'strong';
-    else cls = 'medium';
-    strength.className = 'password-strength ' + cls;
+document.addEventListener('DOMContentLoaded', function() {
+    const copyBtn = document.getElementById('copy-email');
+    const msg = document.getElementById('copy-message');
+    if (copyBtn && msg) {
+        copyBtn.addEventListener('click', function() {
+            navigator.clipboard.writeText('TechInc@gmail.com').then(() => {
+                msg.textContent = 'Copied!';
+                setTimeout(() => { msg.textContent = ''; }, 1500);
+            });
+        });
+    }
 });
+
+function setupLiveSearch() {
+    const searchBar = document.getElementById('search-bar');
+    if (!searchBar) return;
+    const products = document.querySelectorAll('.gallery-item');
+    searchBar.addEventListener('input', () => {
+        const query = searchBar.value.toLowerCase();
+        products.forEach(product => {
+            const name = product.querySelector('.item-name').textContent.toLowerCase();
+            product.style.display = name.includes(query) ? 'block' : 'none';
+        });
+    });
+}
+document.addEventListener('DOMContentLoaded', setupLiveSearch);
